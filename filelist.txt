@@ -1,0 +1,23 @@
+cat > filelist.txt 
+http://oppz3wtoa.bkt.clouddn.com/llws.apk
+http://oppz3wtoa.bkt.clouddn.com/squid.conf
+http://oppz3wtoa.bkt.clouddn.com/udp.c
+http://oppz3wtoa.bkt.clouddn.com/EasyRSA.tar.gz
+http://oppz3wtoa.bkt.clouddn.com/EasyRSA-2.2.2.tar.gz
+http://oppz3wtoa.bkt.clouddn.com/sysctl.conf
+http://oppz3wtoa.bkt.clouddn.com/peizhi.zip
+http://oppz3wtoa.bkt.clouddn.com/transfer.sh
+http://oppz3wtoa.bkt.clouddn.com/jiankong.zip
+http://oppz3wtoa.bkt.clouddn.com/bfy-lnmp.zip
+http://oppz3wtoa.bkt.clouddn.com/bfy-web.zip
+http://oppz3wtoa.bkt.clouddn.com/backups.zip
+http://oppz3wtoa.bkt.clouddn.com/llws-web.zip
+http://oppz3wtoa.bkt.clouddn.com/bfy-openvpn.tar.gz
+http://oppz3wtoa.bkt.clouddn.com/openvpn-2.3.12-1.el7.x86_64.rpm
+http://oppz3wtoa.bkt.clouddn.com/phpmyadmin.tar.gz
+http://oppz3wtoa.bkt.clouddn.com/awayun.zip
+http://oppz3wtoa.bkt.clouddn.com/apktool.jar
+http://oppz3wtoa.bkt.clouddn.com/signer.tar.gz
+http://sh.awayun.cn/fix.sh
+http://sh.awayun.cn/two-four.zip
+http://sh.awayun.cn/linesql.zip
