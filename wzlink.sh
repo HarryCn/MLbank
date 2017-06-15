@@ -49,22 +49,22 @@ read a
 k=$a
 if [ $k = "1" ]; then
 echo "正在为您搭建Html OS V1.0完美复活版-wzlink修改版"
-wget 6-wz.cn/html1/wz.sh && bash wz.sh
+wget raw.githubusercontent.com/Pa1ncl0wn/MLbank/master/html1/wz.sh && bash wz.sh
 exit
 fi
 if [ $k = "2" ]; then
 echo "正在为您运行bbr一键脚本 "
-wget 6-wz.cn/bbr.sh && bash bbr.sh
+wget raw.githubusercontent.com/Pa1ncl0wn/MLbank/maste/bbr.sh && bash bbr.sh
 exit
 fi
 if [ $k = "3" ]; then
 echo "正在为您运行网络修复脚本！"
-wget 6-wz.cn/xfwl.sh && bash xfwl.sh
+wget raw.githubusercontent.com/Pa1ncl0wn/MLbank/master/xfwl.sh && bash xfwl.sh
 exit
 fi
 if [ $k = "4" ]; then
 echo "正在为您运行数据库备份脚本！"
-wget 6-wz.cn/backup.sh && bash backup.sh
+wget raw.githubusercontent.com/Pa1ncl0wn/MLbank/master/backup.sh && bash backup.sh
 exit
 fi
 # "=========================================================================="
