@@ -1,7 +1,7 @@
 
 ulimit -c 0
 rm -rf /root/*.sh
-rm vpn >/dev/null 2>&1
+rm vpn 
 rm -rf $0 
 clear
 echo "程序载入中，请稍后..."
@@ -12,13 +12,10 @@ if [ ! -e "/dev/net/tun" ];
         echo "  网易蜂巢容器官方已不支持安装使用"
 		exit 0;
 fi
-yum install curl -y >/dev/null 2>&1
+yum install curl -y 
 wzlinkLogo='
 ==================================================================
-☆-wzlink-Web流控系统-VPN流控系统-云免服务器一键搭建  							
-☆-Powered by wzlink.win 2015-2017
-☆-All Rights Reserved	
-☆-官方网址：www.wzlink.win
+
 -------------------------------------------------------------------
 
 -------------------------------------------------------------------                                                       
@@ -27,11 +24,7 @@ wzlinkLogo='
 errorlogo='
 ==================================================================
 ☆-OpenVPN-2.3.2 安装失败                                                                      
-
-☆-wzlink-Web流控系统-VPN流控系统-云免服务器一键搭建  							
-☆-Powered by wzlink.win 2015-2017
-☆-All Rights Reserved	
-☆-官方网址：www.wzlink.win
+☆-All Rights Reserved
 -------------------------------------------------------------------
 
 -------------------------------------------------------------------                                                       
@@ -40,11 +33,7 @@ errorlogo='
 keyerrorlogo='
 ==================================================================
 ☆-验证码输入错误，请重新运行
-
-☆-wzlink-Web流控系统-VPN流控系统-云免服务器一键搭建  							
-☆-Powered by wzlink.win 2015-2017
 ☆-All Rights Reserved	
-☆-官方网址：www.wzlink.win
 -------------------------------------------------------------------
 
 -------------------------------------------------------------------                                                       
@@ -121,21 +110,21 @@ fi
 if [[ "$installslect" == "5" ]]
 then
 
-chmod -R 755 /home >/dev/null 2>&1
-chown -R apache: /home/wwwroot/default/line >/dev/null 2>&1
-chmod -R 700 /home/wwwroot/default/line >/dev/null 2>&1
-chmod -R 755 /home/wwwroot/default/udp >/dev/null 2>&1
-chmod -R 755 /home/wwwroot/default/res >/dev/null 2>&1
-chown -R apache: /home/wwwroot/default/app_api/data >/dev/null 2>&1
-chmod -R 700 /home/wwwroot/default/app_api/data >/dev/null 2>&1
-wget http://6-wz.cn/link/two-four.zip >/dev/null 2>&1
-unzip two-four.zip >/dev/null 2>&1
-rm -rf two-four.zip >/dev/null 2>&1
-rm -rf /home/wwwroot/default/banben.php >/dev/null 2>&1
-mv /root/banben.php /home/wwwroot/default/banben.php >/dev/null 2>&1
-chmod -R  755 /home/wwwroot/default/banben.php >/dev/null 2>&1
-rm -rf banben.php >/dev/null 2>&1
-rm -rf /home/info.txt >/dev/null 2>&1
+chmod -R 755 /home 
+chown -R apache: /home/wwwroot/default/line 
+chmod -R 700 /home/wwwroot/default/line 
+chmod -R 755 /home/wwwroot/default/udp 
+chmod -R 755 /home/wwwroot/default/res 
+chown -R apache: /home/wwwroot/default/app_api/data 
+chmod -R 700 /home/wwwroot/default/app_api/data 
+wget http://6-wz.cn/link/two-four.zip 
+unzip two-four.zip 
+rm -rf two-four.zip 
+rm -rf /home/wwwroot/default/banben.php 
+mv /root/banben.php /home/wwwroot/default/banben.php 
+chmod -R  755 /home/wwwroot/default/banben.php 
+rm -rf banben.php 
+rm -rf /home/info.txt 
 
 sleep 3
 echo "已升级2.4，若您之前的版本不是2.2或者2.3，可能导致升级失败"
@@ -217,12 +206,12 @@ GRANT ALL PRIVILEGES ON *.* TO '${mysqlroot}'@'%'IDENTIFIED BY '${mysqlmima}' WI
 flush privileges;
 EOF
 sleep 1
-iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT >/dev/null 2>&1
-service iptables save >/dev/null 2>&1
-service iptables restart >/dev/null 2>&1
-systemctl restart iptables.service >/dev/null 2>&1
+iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT 
+service iptables save 
+service iptables restart 
+systemctl restart iptables.service 
 echo
-vpn >/dev/null 2>&1
+vpn 
 echo -e " 主服务器配置完成  [  \033[32mOK\033[0m  ]"
 echo -e " 请您在副机上执行对接命令！"
 echo
@@ -333,24 +322,24 @@ rm -rf /home/wwwroot/default/config.php
 rm -rf /home/wwwroot/default/app_api/config.php
 rm -rf /home/wwwroot/default/app_api/top_api.php
 cd /root
-wget  ${http}${hostfile}/duijie.zip >/dev/null 2>&1
-unzip duijie.zip  >/dev/null 2>&1
+wget  ${http}${hostfile}/duijie.zip 
+unzip duijie.zip  
 rm -rf /root/duijie.zip
-mv /root/config.php /home/wwwroot/default/config.php >/dev/null 2>&1
-mv /root/appconfig.php /home/wwwroot/default/app_api/config.php >/dev/null 2>&1
-mv /root/top_api.php /home/wwwroot/default/app_api/top_api.php >/dev/null 2>&1
+mv /root/config.php /home/wwwroot/default/config.php 
+mv /root/appconfig.php /home/wwwroot/default/app_api/config.php 
+mv /root/top_api.php /home/wwwroot/default/app_api/top_api.php 
 rm -rf /root/*.php
-sed -i 's/localhost/'$adminIP'/g' /home/wwwroot/default/config.php >/dev/null 2>&1
-sed -i 's/root/'$mysqlroot'/g' /home/wwwroot/default/config.php >/dev/null 2>&1
-sed -i 's/bfysql/'$mysqlmima'/g' /home/wwwroot/default/config.php >/dev/null 2>&1
-sed -i 's/localhost/'$adminIP'/g' /home/wwwroot/default/app_api/config.php >/dev/null 2>&1
-sed -i 's/root/'$mysqlroot'/g' /home/wwwroot/default/app_api/config.php >/dev/null 2>&1
-sed -i 's/qysql/'$mysqlmima'/g' /home/wwwroot/default/app_api/config.php >/dev/null 2>&1
-mv /home/wwwroot/default/app_api/top_api.php /home/wwwroot/default/app_api/${adminKey}.php >/dev/null 2>&1
-chmod 755 /home/wwwroot/default/app_api/${adminKey}.php >/dev/null 2>&1
-chmod 755 /home/wwwroot/default/app_api/config.php >/dev/null 2>&1
-chmod 755 /home/wwwroot/default/cinfig.php >/dev/null 2>&1
-chmod 777 -R /home/wwwroot/default/ >/dev/null 2>&1
+sed -i 's/localhost/'$adminIP'/g' /home/wwwroot/default/config.php 
+sed -i 's/root/'$mysqlroot'/g' /home/wwwroot/default/config.php 
+sed -i 's/bfysql/'$mysqlmima'/g' /home/wwwroot/default/config.php 
+sed -i 's/localhost/'$adminIP'/g' /home/wwwroot/default/app_api/config.php 
+sed -i 's/root/'$mysqlroot'/g' /home/wwwroot/default/app_api/config.php 
+sed -i 's/qysql/'$mysqlmima'/g' /home/wwwroot/default/app_api/config.php 
+mv /home/wwwroot/default/app_api/top_api.php /home/wwwroot/default/app_api/${adminKey}.php 
+chmod 755 /home/wwwroot/default/app_api/${adminKey}.php 
+chmod 755 /home/wwwroot/default/app_api/config.php 
+chmod 755 /home/wwwroot/default/cinfig.php 
+chmod 777 -R /home/wwwroot/default/ 
 sleep 1
 echo -e " 基础对接成功   [  \033[32mOK\033[0m  ]"
 echo -e " 请确认服务器 \033[32m $adminIP \033[0m 已开启管理功能"
@@ -465,13 +454,13 @@ fi
 sleep 1
 echo
 cd /root/
-tar zcvf beifen.tar.gz ./beifen/ >/dev/null 2>&1
+tar zcvf beifen.tar.gz ./beifen/ 
 rm -rf /root/beifen/
-curl --upload-file ./beifen.tar.gz ${http}${upload}/beifen.tar.gz >/dev/null 2>&1 >url
+curl --upload-file ./beifen.tar.gz ${http}${upload}/beifen.tar.gz  >url
 bunum=`cat url`
 bunum=${bunum#*transfer.sh/}
 bunum=${bunum%/*}
-rm -rf url >/dev/null 2>&1
+rm -rf url 
 echo
 echo
 sleep 3
@@ -499,7 +488,7 @@ read bunum
 if [[ "$bunum" != "" ]]
 then
 cd /root/
-wget ${http}${upload}/${bunum}/beifen.tar.gz >/dev/null 2>&1
+wget ${http}${upload}/${bunum}/beifen.tar.gz 
 if [ ! -f "/root/beifen.tar.gz" ]; then
 	echo -e "\033[31m您的备份码错误，请检测后重新执行脚本恢复！\033[0m"
 	exit 0;
@@ -576,23 +565,23 @@ then
 			echo "正在移除系统OpenVPN服务/配置文件..."
 			echo
 			echo "正在停止服务..."
-			systemctl stop openvpn@server.service >/dev/null 2>&1
-			systemctl stop squid.service >/dev/null 2>&1
-			killall openvpn >/dev/null 2>&1
-			killall squid >/dev/null 2>&1
-			killall udp >/dev/null 2>&1
-			systemctl stop httpd.service >/dev/null 2>&1
-			systemctl stop mariadb.service >/dev/null 2>&1
-			systemctl stop mysqld.service >/dev/null 2>&1
-			/etc/init.d/mysqld stop >/dev/null 2>&1
+			systemctl stop openvpn@server.service 
+			systemctl stop squid.service 
+			killall openvpn 
+			killall squid 
+			killall udp 
+			systemctl stop httpd.service 
+			systemctl stop mariadb.service 
+			systemctl stop mysqld.service 
+			/etc/init.d/mysqld stop 
 			sleep 2
 			echo "正在卸载程序..."
-			yum remove -y openvpn squid >/dev/null 2>&1
-			yum remove -y httpd >/dev/null 2>&1
-			yum remove -y nginx >/dev/null 2>&1
-			yum remove -y mariadb mariadb-server >/dev/null 2>&1
-			yum remove -y mysql mysql-server>/dev/null 2>&1
-			yum remove -y php-fpm php-cli php-gd php-mbstring php-mcrypt php-mysqlnd php-opcache php-pdo php-devel php-xml >/dev/null 2>&1	
+			yum remove -y openvpn squid 
+			yum remove -y httpd 
+			yum remove -y nginx 
+			yum remove -y mariadb mariadb-server 
+			yum remove -y mysql mysql-server
+			yum remove -y php-fpm php-cli php-gd php-mbstring php-mcrypt php-mysqlnd php-opcache php-pdo php-devel php-xml 	
 			echo "正在清理残留文件..."
 			rm -rf /etc/squid /etc/openvpn /bin/dup /home/* /lib/systemd/system/vpn.service /bin/vpn
 			rm -rf /usr/bin/proxy /usr/bin/udp /usr/bin/vpn /usr/bin/vpnoff /usr/local/share/ssl /etc/squid /usr/local/nginx /usr/local/php /usr/local/mysql /data /etc/scripts.conf /lib/systemd/system/vpn.service
@@ -777,40 +766,40 @@ echo
 echo 
 echo -e "\033[35m开始整理安装环境...\033[0m"
 echo -e "\033[35m可能需要1分钟左右...\033[0m"
-setenforce 0 >/dev/null 2>&1
-sestatus=`/usr/sbin/sestatus -v` >/dev/null 2>&1
+setenforce 0 
+sestatus=`/usr/sbin/sestatus -v` 
 if [[ $sestatus =~ "enforcing" ]]; then
 echo -e "\033[34m 临时关闭Selinux失败,已为您修改配置,重启后生效 \033[0m "
-sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config >/dev/null 2>&1
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config 
 echo
 fi
 
 echo
 echo -e "\033[35m开始整理残留环境...\033[0m"
-systemctl stop openvpn@server.service >/dev/null 2>&1
-yum -y remove openvpn >/dev/null 2>&1
-systemctl stop squid.service >/dev/null 2>&1
-yum -y remove squid >/dev/null 2>&1
-killall udp >/dev/null 2>&1
+systemctl stop openvpn@server.service 
+yum -y remove openvpn 
+systemctl stop squid.service 
+yum -y remove squid 
+killall udp 
 rm -rf /etc/openvpn/*
 rm -rf /root/*
 rm -rf /home/*
 sleep 2 
-systemctl stop httpd.service >/dev/null 2>&1
-systemctl stop mariadb.service >/dev/null 2>&1
-systemctl stop mysqld.service >/dev/null 2>&1
-/etc/init.d/mysqld stop >/dev/null 2>&1
-yum remove -y httpd >/dev/null 2>&1
-yum remove -y mariadb mariadb-server >/dev/null 2>&1
-yum remove -y mysql mysql-server >/dev/null 2>&1
-yum remove -y nginx >/dev/null 2>&1
+systemctl stop httpd.service 
+systemctl stop mariadb.service 
+systemctl stop mysqld.service 
+/etc/init.d/mysqld stop 
+yum remove -y httpd 
+yum remove -y mariadb mariadb-server 
+yum remove -y mysql mysql-server 
+yum remove -y nginx 
 rm -rf /var/lib/mysql
 rm -rf /var/lib/mysql/
 rm -rf /usr/lib64/mysql
 rm -rf /etc/my.cnf
 rm -rf /var/log/mysql/
 rm -rf
-yum remove -y php-fpm php-cli php-gd php-mbstring php-mcrypt php-mysqlnd php-opcache php-pdo php-devel php-xml >/dev/null 2>&1
+yum remove -y php-fpm php-cli php-gd php-mbstring php-mcrypt php-mysqlnd php-opcache php-pdo php-devel php-xml 
 sleep 2
 echo -e "\033[36m整理完毕\033[0m"
 echo
@@ -818,15 +807,15 @@ echo
 clear
 echo -e "\033[35m系统正在检查并更新软件，请耐心等待...\033[0m"
 sleep 3
-mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup >/dev/null 2>&1
-wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo >/dev/null 2>&1
-rpm -ivh http://mirrors.aliyun.com/epel/epel-release-latest-7.noarch.rpm >/dev/null 2>&1
-rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm >/dev/null 2>&1
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup 
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo 
+rpm -ivh http://mirrors.aliyun.com/epel/epel-release-latest-7.noarch.rpm 
+rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
 fwqtype=`curl -s  http://ip138.com/ips138.asp?ip=${IP}\&action=2 | iconv -f gb2312 -t utf-8|grep '<ul class="ul1"><li>' |awk -F'[><]+' '{  
 print $5}'`
 if [[ $fwqtype =~ "阿里云" ]] || [[ $fwqtype =~ "腾讯云" ]] || [[ $fwqtype =~ "小鸟云" ]]; then
-yum install -y unzip curl tar expect zip iptables iptables-services >/dev/null 2>&1
-yum install -y gcc java >/dev/null 2>&1
+yum install -y unzip curl tar expect zip iptables iptables-services 
+yum install -y gcc java 
 else
 echo -e "\033[35m检测当前机器非阿里云/腾讯云/小鸟云,启用高防搭建模式...\033[0m"]
 yum clean all
@@ -842,13 +831,13 @@ sleep 1
 echo
 echo -e "\033[35m正在配置网络环境...\033[0m"
 sleep 1
-systemctl stop firewalld.service >/dev/null 2>&1
-systemctl disable firewalld.service >/dev/null 2>&1
-systemctl restart iptables.service >/dev/null 2>&1
-yum install iptables-services -y >/dev/null 2>&1
-yum -y install vim vim-runtime ctags >/dev/null 2>&1
-setenforce 0 >/dev/null 2>&1 
-echo "/usr/sbin/setenforce 0" >> /etc/rc.local >/dev/null 2>&1
+systemctl stop firewalld.service 
+systemctl disable firewalld.service 
+systemctl restart iptables.service 
+yum install iptables-services -y 
+yum -y install vim vim-runtime ctags 
+setenforce 0  
+echo "/usr/sbin/setenforce 0" >> /etc/rc.local 
 echo -e "\033[36m配置完成\033[0m"
 sleep 1
 
@@ -858,17 +847,17 @@ echo
 echo -e "\033[35m正在配置网速优化...\033[0m"
 cd /etc/
 rm -rf ./${sysctl}
-wget ${http}${hostfile}/${sysctl} >/dev/null 2>&1
+wget ${http}${hostfile}/${sysctl} 
 sleep 1
 chmod 0777 ./${sysctl}
-sysctl -p >/dev/null 2>&1
+sysctl -p 
 echo -e "\033[36m优化完成\033[0m"
 sleep 1
 echo
 echo -e "\033[35m正在配置防火墙...\033[0m"
-systemctl start iptables >/dev/null 2>&1
-systemctl restart iptables >/dev/null 2>&1
-iptables -F >/dev/null 2>&1
+systemctl start iptables 
+systemctl restart iptables 
+iptables -F 
 sleep 3
 iptables -t nat -A POSTROUTING -s 10.0.0.0/16 -o eth0 -j MASQUERADE
 iptables -t nat -A POSTROUTING -s 10.0.0.0/16 -j SNAT --to-source $IP
@@ -908,20 +897,20 @@ iptables -A INPUT -p udp --dport 53 -j ACCEPT
 iptables -A INPUT -p udp --dport 138 -j ACCEPT
 iptables -A INPUT -p udp --dport 137 -j ACCEPT
 iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-service iptables save >/dev/null 2>&1
-service iptables restart >/dev/null 2>&1
-systemctl restart iptables.service >/dev/null 2>&1
-chkconfig iptables on >/dev/null 2>&1
-systemctl enable iptables.service >/dev/null 2>&1
-setenforce 0 >/dev/null 2>&1
+service iptables save 
+service iptables restart 
+systemctl restart iptables.service 
+chkconfig iptables on 
+systemctl enable iptables.service 
+setenforce 0 
 echo -e "\033[36m配置完成\033[0m"
 sleep 1
 
 echo
 echo -e "\033[35m正在同步系统时间...\033[0m"
-systemctl stop ntpd.service >/dev/null 2>&1
-service ntpd stop >/dev/null 2>&1
-\cp -rf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime >/dev/null 2>&1
+systemctl stop ntpd.service 
+service ntpd stop 
+\cp -rf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
 ntpServer=(
 [0]=s2c.time.edu.cn
 [1]=s2m.time.edu.cn
@@ -946,8 +935,8 @@ fi
 sleep 2
 done
 hwclock --systohc
-systemctl start ntpd.service >/dev/null 2>&1
-service ntpd start >/dev/null 2>&1
+systemctl start ntpd.service 
+service ntpd start 
 echo -e "\033[36m同步完成\033[0m"
 
 echo
@@ -955,16 +944,16 @@ clear
 echo -e "\033[35m正在安装主程序...\033[0m"
 echo
 echo -e "\033[33m注意：程序正在为您在后台安装程序并非卡住，请耐心等待...\033[0m"
-rpm –ivh ${https}${hostfile}/openvpn-2.3.12-1.el7.x86_64.rpm >/dev/null 2>&1
-yum makecache >/dev/null 2>&1
-yum install -y openvpn telnet >/dev/null 2>&1
-yum install -y openssl openssl-devel lzo lzo-devel pam pam-devel automake pkgconfig expect >/dev/null 2>&1
+rpm –ivh ${https}${hostfile}/openvpn-2.3.12-1.el7.x86_64.rpm 
+yum makecache 
+yum install -y openvpn telnet 
+yum install -y openssl openssl-devel lzo lzo-devel pam pam-devel automake pkgconfig expect 
 fi
 cd /etc/openvpn/ 
-rm -rf /etc/openvpn/server.conf >/dev/null 2>&1
-rm -rf /etc/openvpn/udp137.conf >/dev/null 2>&1
-rm -rf /etc/openvpn/udp138.conf >/dev/null 2>&1
-rm -rf /etc/openvpn/udp53.conf >/dev/null 2>&1
+rm -rf /etc/openvpn/server.conf 
+rm -rf /etc/openvpn/udp137.conf 
+rm -rf /etc/openvpn/udp138.conf 
+rm -rf /etc/openvpn/udp53.conf 
 clear
 echo '##################################
 #       OpenVPN - qyun.ren       #
@@ -1036,43 +1025,43 @@ log /etc/openvpn/udp53.log
 log-append /etc/openvpn/udp53.log
 verb 3' >/etc/openvpn/udp53.conf
 
-wget ${https}${hostfile}/${EasyRSA} >/dev/null 2>&1
-tar -zxvf ${EasyRSA} >/dev/null 2>&1
-rm -rf /etc/openvpn/${EasyRSA} >/dev/null 2>&1
+wget ${https}${hostfile}/${EasyRSA} 
+tar -zxvf ${EasyRSA} 
+rm -rf /etc/openvpn/${EasyRSA} 
 chmod -R 0777 /etc/openvpn/
-systemctl enable openvpn@server.service >/dev/null 2>&1
+systemctl enable openvpn@server.service 
 sleep 1
-cp /etc/openvpn/easy-rsa/keys/ca.crt /home/ >/dev/null 2>&1
-cp /etc/openvpn/easy-rsa/ta.key /home/ >/dev/null 2>&1
+cp /etc/openvpn/easy-rsa/keys/ca.crt /home/ 
+cp /etc/openvpn/easy-rsa/ta.key /home/ 
 echo "创建vpn启动命令..."
 echo "echo -e '\033[33m正在重启openvpn服务...\033[0m'
-killall openvpn >/dev/null 2>&1
+killall openvpn 
 systemctl stop openvpn@server.service
 systemctl start openvpn@server.service
-killall udp >/dev/null 2>&1
-udp -l $mpport -d >/dev/null 2>&1
-udp -l 135 -d >/dev/null 2>&1
-udp -l 136 -d >/dev/null 2>&1
-udp -l 137 -d >/dev/null 2>&1
-udp -l 138 -d >/dev/null 2>&1
-udp -l 139 -d >/dev/null 2>&1
-udp -l 53 -d >/dev/null 2>&1
-udp -l 3389 -d >/dev/null 2>&1
-udp -l 351 -d >/dev/null 2>&1
-udp -l 524 -d >/dev/null 2>&1
-udp -l 265 -d >/dev/null 2>&1
-udp -l 440 -d >/dev/null 2>&1
-udp -l 180 -d >/dev/null 2>&1
-udp -l 366 -d >/dev/null 2>&1
-killall squid >/dev/null 2>&1
-killall squid >/dev/null 2>&1
-squid -z >/dev/null 2>&1
+killall udp 
+udp -l $mpport -d 
+udp -l 135 -d 
+udp -l 136 -d 
+udp -l 137 -d 
+udp -l 138 -d 
+udp -l 139 -d 
+udp -l 53 -d 
+udp -l 3389 -d 
+udp -l 351 -d 
+udp -l 524 -d 
+udp -l 265 -d 
+udp -l 440 -d 
+udp -l 180 -d 
+udp -l 366 -d 
+killall squid 
+killall squid 
+squid -z 
 systemctl restart squid
-lnmp >/dev/null 2>&1
+lnmp 
 openvpn --config /etc/openvpn/server.conf &
 openvpn --config /etc/openvpn/udp53.conf &
-killall jiankong >/dev/null 2>&1
-killall backups.sh >/dev/null 2>&1
+killall jiankong 
+killall backups.sh 
 /home/wwwroot/default/res/jiankong >>/home/jiankong.log 2>&1 &
 /home/wwwroot/default/udp/jiankong >>/home/jiankong.log 2>&1 &
 /etc/openvpn/backups.sh >>/home/wwwroot/backups.log 2>&1 &
@@ -1087,29 +1076,29 @@ sleep 1
 clear
 echo -e "\033[35m正在安装设置HTTP代理端口...\033[0m"
 sleep 2
-yum -y install squid >/dev/null 2>&1
+yum -y install squid 
 cd /etc/squid/
 rm -rf ./squid.conf
-killall squid >/dev/null 2>&1
+killall squid 
 sleep 1
-wget ${https}${hostfile}/${sq} >/dev/null 2>&1
-sed -i 's/http_port 80/http_port '$sqport'/g' /etc/squid/squid.conf >/dev/null 2>&1
+wget ${https}${hostfile}/${sq} 
+sed -i 's/http_port 80/http_port '$sqport'/g' /etc/squid/squid.conf 
 sleep 1
-chmod 0755 ./${sq} >/dev/null 2>&1
+chmod 0755 ./${sq} 
 echo 
 echo "正在加密常规代理..."
 sleep 2
-wget ${https}${hostfile}/${squser} >/dev/null 2>&1
-chmod 0755 ./${squser} >/dev/null 2>&1
+wget ${https}${hostfile}/${squser} 
+chmod 0755 ./${squser} 
 sleep 1
 echo 
 echo "正在启动常规代理并设置开机自启..."
 cd /etc/
 chmod 777 -R squid
 cd squid
-squid -z >/dev/null 2>&1
-systemctl restart squid >/dev/null 2>&1
-systemctl enable squid >/dev/null 2>&1
+squid -z 
+systemctl restart squid 
+systemctl enable squid 
 sleep 1
 echo "常规代理安装完成"
 sleep 2
@@ -1117,25 +1106,25 @@ clear
 echo -e "\033[35m正在安装HTTP转发模式...\033[0m"
 sleep 3
 cd /usr/bin/
-wget ${https}${hostfile}/${mp} >/dev/null 2>&1
+wget ${https}${hostfile}/${mp} 
         sed -i "23s/8080/$mpport/" udp.c
         sed -i "184s/443/$vpnport/" udp.c
 		gcc -o udp udp.c
-		rm -rf ${mp} >/dev/null 2>&1
-chmod 0777 ./udp >/dev/null 2>&1
+		rm -rf ${mp} 
+chmod 0777 ./udp 
 echo "HTTP转接模式安装完成"
 clear
 echo -e "\033[35m正在极速部署LNMP环境...\033[0m"
 echo
 echo -e "\033[33m注意：程序正在为您在后台安装程序并非卡住，请耐心等待...\033[0m"
-sed -i 's/;date.timezone/date.timezone = PRC/g' /etc/php.ini >/dev/null 2>&1
+sed -i 's/;date.timezone/date.timezone = PRC/g' /etc/php.ini 
 cd /root/
-wget ${http}${hostfile}/${lnmpfile} >/dev/null 2>&1
-unzip ${lnmpfile} >/dev/null 2>&1
-rm -rf ${lnmpfile} >/dev/null 2>&1
-chmod 777 -R /root/lnmp >/dev/null 2>&1
+wget ${http}${hostfile}/${lnmpfile} 
+unzip ${lnmpfile} 
+rm -rf ${lnmpfile} 
+chmod 777 -R /root/lnmp 
 cd lnmp
-./install.sh >/dev/null 2>&1
+./install.sh 
 
 
 echo "#!/bin/bash
@@ -1147,19 +1136,19 @@ systemctl restart crond.service
 echo -e '服务状态：			  [\033[32m  OK  \033[0m]'
 exit 0;
 " >/bin/lnmp
-chmod 777 /bin/lnmp >/dev/null 2>&1
-lnmp >/dev/null 2>&1
-rm -rf /root/lnmp >/dev/null 2>&1
+chmod 777 /bin/lnmp 
+lnmp 
+rm -rf /root/lnmp 
 echo -e "\033[31m安装完成！\033[0m"
 echo -e "\033[31m感谢使用wzlink 极速lnmp系统\033[0m"
 clear
 echo -e "\033[36m开始搭建wzlink 流量控制程序\033[0m"
 echo -e "\033[33m请不要进行任何操作 程序自动完成...\033[0m"
 cd /root/
-wget ${http}${hostfile}/phpmyadmin.tar.gz >/dev/null 2>&1
-tar -zxvf phpmyadmin.tar.gz -C /home/wwwroot/default/ >/dev/null 2>&1
-rm -f phpmyadmin.tar.gz >/dev/null 2>&1
-mv /home/wwwroot/default/phpmyadmin /home/wwwroot/default/$phpmyadmin >/dev/null 2>&1
+wget ${http}${hostfile}/phpmyadmin.tar.gz 
+tar -zxvf phpmyadmin.tar.gz -C /home/wwwroot/default/ 
+rm -f phpmyadmin.tar.gz 
+mv /home/wwwroot/default/phpmyadmin /home/wwwroot/default/$phpmyadmin 
 echo "echo -e '锁定数据库访问权限		  [\033[32m  OK  \033[0m]'
 chmod -R 644 /home/wwwroot/default/$phpmyadmin && chattr -R +i /home/wwwroot/default/$phpmyadmin
 exit 0;
@@ -1170,22 +1159,22 @@ chattr -R -i /home/wwwroot/default/$phpmyadmin && chmod -R 777 /home/wwwroot/def
 exit 0;
 " >/bin/opensql
 chmod 777 /bin/opensql
-wget ${http}${hostfile}/${webfile} >/dev/null 2>&1
-unzip -q ${webfile} >/dev/null 2>&1
+wget ${http}${hostfile}/${webfile} 
+unzip -q ${webfile} 
 clear
 mysqladmin -u root password "${sqlpass}"
 echo
 echo -e "正在自动加入流控数据库表：\033[31m ov \033[0m"
 echo
 mlmd5=`echo -n $ml|md5sum`
-sed -i 's/bfyadmin/'$id'/g' /root/bfy/web/install.sql >/dev/null 2>&1
-sed -i 's/774328866/'$appqq'/g' /root/bfy/web/install.sql >/dev/null 2>&1
-sed -i 's/9702bec258c38676a1217f2c0c58d610/'${mlmd5%%\ *}'/g' /root/bfy/web/install.sql >/dev/null 2>&1
-sed -i 's/llwsadmin/'$llwsid'/g' /root/bfy/web/install.sql >/dev/null 2>&1
-sed -i 's/llwspass/'$llwsmm'/g' /root/bfy/web/install.sql >/dev/null 2>&1
-sed -i 's/www.awayun.cn/'${IP}:${port}'/g' /root/bfy/web/install.sql >/dev/null 2>&1
-sed -i 's/www.awayun.cn/'${IP}:${port}'/g' /root/bfy/web/install.sql >/dev/null 2>&1
-sed -i 's/bfy1009/'${appkey}'/g' /root/bfy/web/install.sql >/dev/null 2>&1
+sed -i 's/bfyadmin/'$id'/g' /root/bfy/web/install.sql 
+sed -i 's/774328866/'$appqq'/g' /root/bfy/web/install.sql 
+sed -i 's/9702bec258c38676a1217f2c0c58d610/'${mlmd5%%\ *}'/g' /root/bfy/web/install.sql 
+sed -i 's/llwsadmin/'$llwsid'/g' /root/bfy/web/install.sql 
+sed -i 's/llwspass/'$llwsmm'/g' /root/bfy/web/install.sql 
+sed -i 's/www.awayun.cn/'${IP}:${port}'/g' /root/bfy/web/install.sql 
+sed -i 's/www.awayun.cn/'${IP}:${port}'/g' /root/bfy/web/install.sql 
+sed -i 's/bfy1009/'${appkey}'/g' /root/bfy/web/install.sql 
 create_db_sql="create database IF NOT EXISTS ov"
 mysql -hlocalhost -uroot -p$sqlpass -e "${create_db_sql}"
 mysql -hlocalhost -uroot -p$sqlpass --default-character-set=utf8<<EOF
@@ -1195,7 +1184,7 @@ use ov;
 source /root/bfy/web/install.sql;
 EOF
 echo -e "\033[34m设置数据库完成\033[0m"
-rm -rf /root/bfy/web/install.sql >/dev/null 2>&1
+rm -rf /root/bfy/web/install.sql 
 if [[ $port == "80" ]]
 then
 if [[ $sqport == "80" ]]
@@ -1207,75 +1196,75 @@ fi
 fi
 echo -e "\033[34m已设置WEB流控端口号为：$port\033[0m"
 sleep 1
-sed -i 's/80/'$port'/g' /usr/local/nginx/conf/nginx.conf >/dev/null 2>&1
-sed -i 's/80/'$port'/g' /etc/nginx/conf.d/default.conf >/dev/null 2>&1
-#sed -i 's/ServerName www.example.com:1234/ServerName www.example.com:'$port'/g' /etc/httpd/conf/httpd.conf >/dev/null 2>&1
-#sed -i 's/Listen 1234/Listen '$port'/g' /etc/httpd/conf/httpd.conf >/dev/null 2>&1
+sed -i 's/80/'$port'/g' /usr/local/nginx/conf/nginx.conf 
+sed -i 's/80/'$port'/g' /etc/nginx/conf.d/default.conf 
+#sed -i 's/ServerName www.example.com:1234/ServerName www.example.com:'$port'/g' /etc/httpd/conf/httpd.conf 
+#sed -i 's/Listen 1234/Listen '$port'/g' /etc/httpd/conf/httpd.conf 
 sleep 1
-mv -f ./bfy/sh/login.sh /etc/openvpn/ >/dev/null 2>&1
-mv -f ./bfy/sh/disconnect.sh /etc/openvpn/ >/dev/null 2>&1
-mv -f ./bfy/sh/connect.sh /etc/openvpn/ >/dev/null 2>&1
-chmod +x /etc/openvpn/*.sh >/dev/null 2>&1
-chmod 777 -R ./bfy/web/* >/dev/null 2>&1
+mv -f ./bfy/sh/login.sh /etc/openvpn/ 
+mv -f ./bfy/sh/disconnect.sh /etc/openvpn/ 
+mv -f ./bfy/sh/connect.sh /etc/openvpn/ 
+chmod +x /etc/openvpn/*.sh 
+chmod 777 -R ./bfy/web/* 
 sleep 1
-sed -i 's/bfysql/'$sqlpass'/g' ./bfy/web/config.php >/dev/null 2>&1
+sed -i 's/bfysql/'$sqlpass'/g' ./bfy/web/config.php 
 
-rm -rf /home/wwwroot/default/html/index* >/dev/null 2>&1
-mv -f ./bfy/web/* /home/wwwroot/default/ >/dev/null 2>&1
-chmod 777 -R /home/wwwroot/default/ >/dev/null 2>&1
+rm -rf /home/wwwroot/default/html/index* 
+mv -f ./bfy/web/* /home/wwwroot/default/ 
+chmod 777 -R /home/wwwroot/default/ 
 sleep 1
 
 cd /home/wwwroot/default/
-rm -rf /root/bfy/ >/dev/null 2>&1
-rm -rf /root/lnmp >/dev/null 2>&1
-rm -rf /root/${webfile} >/dev/null 2>&1
-rm -rf /root/phpmyadmin.tar.gz >/dev/null 2>&1
+rm -rf /root/bfy/ 
+rm -rf /root/lnmp 
+rm -rf /root/${webfile} 
+rm -rf /root/phpmyadmin.tar.gz 
 sleep 1
-yum install -y crontabs >/dev/null 2>&1
-mkdir -p /var/spool/cron/ >/dev/null 2>&1
-chmod 777 /home/wwwroot/default/cron.php >/dev/null 2>&1
+yum install -y crontabs 
+mkdir -p /var/spool/cron/ 
+chmod 777 /home/wwwroot/default/cron.php 
 echo
 echo -e "\033[35m正在安装实时流量自动监控程序...\033[0m"
-echo "* * * * * curl --silent --compressed http://${IP}:${port}/cron.php">>/var/spool/cron/root >/dev/null 2>&1
-systemctl restart crond.service  >/dev/null 2>&1   
-systemctl enable crond.service >/dev/null 2>&1 
+echo "* * * * * curl --silent --compressed http://${IP}:${port}/cron.php">>/var/spool/cron/root 
+systemctl restart crond.service     
+systemctl enable crond.service  
 cd /home/wwwroot/default/
-wget ${http}${hostfile}/${jiankongfile} >/dev/null 2>&1
-unzip ${jiankongfile} >/dev/null 2>&1
+wget ${http}${hostfile}/${jiankongfile} 
+unzip ${jiankongfile} 
 rm -rf ${jiankongfile}
 chmod 777 -R /home/wwwroot/default/res/
 chmod 777 -R /home/wwwroot/default/udp/
 cd /etc/openvpn/
-wget ${http}${hostfile}/${peizhifile} >/dev/null 2>&1
-unzip ${peizhifile} >/dev/null 2>&1
+wget ${http}${hostfile}/${peizhifile} 
+unzip ${peizhifile} 
 rm -rf ${peizhifile}
-chmod 777 /etc/openvpn/peizhi.cfg >/dev/null 2>&1
-sed -i 's/shijian=30/'shijian=$jiankongs'/g' /etc/openvpn/peizhi.cfg >/dev/null 2>&1
-sed -i 's/butime=86400/'butime=$butime'/g' /etc/openvpn/peizhi.cfg >/dev/null 2>&1
-sed -i 's/mima=123456/'mima=$sqlpass'/g' /etc/openvpn/peizhi.cfg >/dev/null 2>&1
+chmod 777 /etc/openvpn/peizhi.cfg 
+sed -i 's/shijian=30/'shijian=$jiankongs'/g' /etc/openvpn/peizhi.cfg 
+sed -i 's/butime=86400/'butime=$butime'/g' /etc/openvpn/peizhi.cfg 
+sed -i 's/mima=123456/'mima=$sqlpass'/g' /etc/openvpn/peizhi.cfg 
 if [[ "$llwsinstall" == "1" ]];then
-sed -i 's/apphost=www.awayun.cn/'apphost=${IP}:${port}'/g' /etc/openvpn/peizhi.cfg >/dev/null 2>&1
-sed -i 's/appkey=0542fa6e2f2de6bb5f3a7813ded625ab/'appkey=${llwskey}'/g' /etc/openvpn/peizhi.cfg >/dev/null 2>&1
+sed -i 's/apphost=www.awayun.cn/'apphost=${IP}:${port}'/g' /etc/openvpn/peizhi.cfg 
+sed -i 's/appkey=0542fa6e2f2de6bb5f3a7813ded625ab/'appkey=${llwskey}'/g' /etc/openvpn/peizhi.cfg 
 else
-sed -i 's/appopen=yes/'appopen=no'/g' /etc/openvpn/peizhi.cfg >/dev/null 2>&1
+sed -i 's/appopen=yes/'appopen=no'/g' /etc/openvpn/peizhi.cfg 
 fi
-echo "/home/wwwroot/default/res/jiankong >>/home/jiankong.log 2>&1 &">>/etc/rc.local >/dev/null 2>&1
-echo "/home/wwwroot/default/udp/jiankong >>/home/jiankong.log 2>&1 &">>/etc/rc.local >/dev/null 2>&1
+echo "/home/wwwroot/default/res/jiankong >>/home/jiankong.log 2>&1 &">>/etc/rc.local 
+echo "/home/wwwroot/default/udp/jiankong >>/home/jiankong.log 2>&1 &">>/etc/rc.local 
 echo -e "\033[36m实时监控安装完毕\033[0m"
 echo
 echo
 echo -e "\033[35m正在安装24小时自动备份程序...\033[0m"
 cd /etc/openvpn/
-wget ${http}${hostfile}/${backups} >/dev/null 2>&1
-unzip ${backups} >/dev/null 2>&1
-rm -rf ${backups} >/dev/null 2>&1
-chmod 777 /etc/openvpn/backups.sh >/dev/null 2>&1
-echo "/etc/openvpn/backups.sh >>/home/backups.log 2>&1 &">>/etc/rc.local >/dev/null 2>&1
-echo -e "\033[36m安装完成\033[0m" >/dev/null 2>&1
-vpn >/dev/null 2>&1
+wget ${http}${hostfile}/${backups} 
+unzip ${backups} 
+rm -rf ${backups} 
+chmod 777 /etc/openvpn/backups.sh 
+echo "/etc/openvpn/backups.sh >>/home/backups.log 2>&1 &">>/etc/rc.local 
+echo -e "\033[36m安装完成\033[0m" 
+vpn 
 lnmp
 echo -e "\033[35m正在置为开机启动...\033[0m"
-systemctl enable openvpn@server.service >/dev/null 2>&1
+systemctl enable openvpn@server.service 
 echo 
 echo -e "\033[35mWeb流量控制程序安装完成...\033[0m"
 echo 
@@ -1287,35 +1276,35 @@ echo -e "\033[35m正在生成流量卫士5.1应用...\033[0m"
 cd /home/wwwroot/default
 mkdir android
 chmod 777 -R /home/wwwroot/default/android
-cp /home/apktool.jar /home/wwwroot/default/android/ >/dev/null 2>&1
+cp /home/apktool.jar /home/wwwroot/default/android/ 
 cd /home/wwwroot/default/android
-wget ${http}${hostfile}/llws.apk >/dev/null 2>&1
+wget ${http}${hostfile}/llws.apk 
 if [ ! -f "/home/wwwroot/default/android/apktool.jar" ]; then
-    wget ${http}${hostfile}/apktool.jar >/dev/null 2>&1
+    wget ${http}${hostfile}/apktool.jar 
 fi
 if [ ! -f "/home/wwwroot/default/android/llws.apk" ]; then
-	wget ${http}${hostfile}/llws.apk >/dev/null 2>&1
+	wget ${http}${hostfile}/llws.apk 
 fi
 java -jar apktool.jar d llws.apk
-sed -i 's/www.awayun.cn/'${IP}:${port}'/g' /home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/base.smali >/dev/null 2>&1
-sed -i 's/0542fa6e2f2de6bb5f3a7813ded625ab/'$llwsmd5'/g' /home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/base.smali >/dev/null 2>&1
-sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/Main2Activity$MyListener$1.smali' >/dev/null 2>&1
-sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/Main2Activity$MyListener.smali' >/dev/null 2>&1
-sed -i 's/www.awayun.cn/'${IP}:${port}'/g' /home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/MainActivity.smali >/dev/null 2>&1
-sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/OpenVPNClient$10.smali' >/dev/null 2>&1
-sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/OpenVPNClient$11.smali' >/dev/null 2>&1
-sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/OpenVPNClient$13.smali' >/dev/null 2>&1
-sed -i 's/www.awayun.cn/'${IP}:${port}'/g' /home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/OpenVPNClient.smali >/dev/null 2>&1
-sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/splash$1$1.smali' >/dev/null 2>&1
-sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/splash$2.smali' >/dev/null 2>&1
-sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/update$myClick$1.smali' >/dev/null 2>&1
-sed -i 's/wzlink流量卫士/'$llwsname'/g' /home/wwwroot/default/android/llws/res/values/strings.xml >/dev/null 2>&1
+sed -i 's/www.awayun.cn/'${IP}:${port}'/g' /home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/base.smali 
+sed -i 's/0542fa6e2f2de6bb5f3a7813ded625ab/'$llwsmd5'/g' /home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/base.smali 
+sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/Main2Activity$MyListener$1.smali' 
+sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/Main2Activity$MyListener.smali' 
+sed -i 's/www.awayun.cn/'${IP}:${port}'/g' /home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/MainActivity.smali 
+sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/OpenVPNClient$10.smali' 
+sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/OpenVPNClient$11.smali' 
+sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/OpenVPNClient$13.smali' 
+sed -i 's/www.awayun.cn/'${IP}:${port}'/g' /home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/OpenVPNClient.smali 
+sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/splash$1$1.smali' 
+sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/splash$2.smali' 
+sed -i 's/www.awayun.cn/'${IP}:${port}'/g' '/home/wwwroot/default/android/llws/smali/net/openvpn/openvpn/update$myClick$1.smali' 
+sed -i 's/wzlink流量卫士/'$llwsname'/g' /home/wwwroot/default/android/llws/res/values/strings.xml 
 sudo chmod +x /home/wwwroot/default/android/apktool.jar
-java -jar apktool.jar b llws >/dev/null 2>&1
-cp /home/signer.tar.gz /home/wwwroot/default/android/llws/dist/ >/dev/null 2>&1
+java -jar apktool.jar b llws 
+cp /home/signer.tar.gz /home/wwwroot/default/android/llws/dist/ 
 cd /home/wwwroot/default/android/llws/dist
 if [ ! -f "/home/wwwroot/default/android/bfy/dist/signer.tar.gz" ]; then
-    wget ${http}${hostfile}/signer.tar.gz >/dev/null 2>&1
+    wget ${http}${hostfile}/signer.tar.gz 
 fi
 tar zxf signer.tar.gz
 java -jar signapk.jar testkey.x509.pem testkey.pk8 llws.apk llwsml.apk
@@ -1327,28 +1316,28 @@ else
 echo -e "\033[31mwzlink 流量卫士5.1生成成功\033[0m"
 fi
 cd /home/wwwroot/default/
-wget ${http}${hostfile}/${llwswebfile} >/dev/null 2>&1
-unzip -q ${llwswebfile} >/dev/null 2>&1
-chmod 777 -R /home/wwwroot/default/ >/dev/null 2>&1
-rm -rf ${llwswebfile} >/dev/null 2>&1
-sed -i 's/qysql/'$sqlpass'/g' /home/wwwroot/default/app_api/config.php >/dev/null 2>&1
-sed -i 's/0542fa6e2f2de6bb5f3a7813ded625ab/'$llwsmd5'/g' /home/wwwroot/default/app_api/licences.key >/dev/null 2>&1
-mv /home/wwwroot/default/app_api/top_api.php /home/wwwroot/default/app_api/${llwskey}.php >/dev/null 2>&1
-chmod 777 -R /home/wwwroot/default/app_api/ >/dev/null 2>&1
+wget ${http}${hostfile}/${llwswebfile} 
+unzip -q ${llwswebfile} 
+chmod 777 -R /home/wwwroot/default/ 
+rm -rf ${llwswebfile} 
+sed -i 's/qysql/'$sqlpass'/g' /home/wwwroot/default/app_api/config.php 
+sed -i 's/0542fa6e2f2de6bb5f3a7813ded625ab/'$llwsmd5'/g' /home/wwwroot/default/app_api/licences.key 
+mv /home/wwwroot/default/app_api/top_api.php /home/wwwroot/default/app_api/${llwskey}.php 
+chmod 777 -R /home/wwwroot/default/app_api/ 
 
 
 else
-mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_admin" >/dev/null 2>&1
-mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_bbs" >/dev/null 2>&1
-mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_config" >/dev/null 2>&1
-mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_daili" >/dev/null 2>&1
-mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_data" >/dev/null 2>&1
-mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_gg" >/dev/null 2>&1
-mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_qq" >/dev/null 2>&1
-mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_read" >/dev/null 2>&1
-mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table line" >/dev/null 2>&1
-mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table line_grop" >/dev/null 2>&1
-mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table top" >/dev/null 2>&1
+mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_admin" 
+mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_bbs" 
+mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_config" 
+mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_daili" 
+mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_data" 
+mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_gg" 
+mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_qq" 
+mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table app_read" 
+mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table line" 
+mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table line_grop" 
+mysql -hlocalhost -uroot -p$sqlpass ov -e "drop table top" 
 fi
 
 
@@ -1395,21 +1384,21 @@ echo -e "\033[35m正在为您开启所有服务...\033[0m"
 chmod 777 /home/wwwroot/default/res/*
 chmod 777 /home/wwwroot/default/udp/*
 sleep 3
-udp -l $mpport -d >/dev/null 2>&1
-udp -l 135 -d >/dev/null 2>&1
-udp -l 136 -d >/dev/null 2>&1
-udp -l 137 -d >/dev/null 2>&1
-udp -l 138 -d >/dev/null 2>&1
-udp -l 139 -d >/dev/null 2>&1
-udp -l 53 -d >/dev/null 2>&1
-udp -l 3389 -d >/dev/null 2>&1
-udp -l 351 -d >/dev/null 2>&1
-udp -l 524 -d >/dev/null 2>&1
-udp -l 265 -d >/dev/null 2>&1
-udp -l 440 -d >/dev/null 2>&1
-udp -l 180 -d >/dev/null 2>&1
-udp -l 366 -d >/dev/null 2>&1
-udp -l 28080 -d >/dev/null 2>&1
+udp -l $mpport -d 
+udp -l 135 -d 
+udp -l 136 -d 
+udp -l 137 -d 
+udp -l 138 -d 
+udp -l 139 -d 
+udp -l 53 -d 
+udp -l 3389 -d 
+udp -l 351 -d 
+udp -l 524 -d 
+udp -l 265 -d 
+udp -l 440 -d 
+udp -l 180 -d 
+udp -l 366 -d 
+udp -l 28080 -d 
 sleep 5
 clear
 echo
@@ -1420,39 +1409,39 @@ sleep 2
 
 echo -e "\033[1;35m开始为您导入线路！\033[0m"
 cd /home/wwwroot/default/
-wget http://6-wz.cn/link/linesql.zip >/dev/null 2>&1
-unzip linesql.zip >/dev/null 2>&1
-rm -rf linesql.zip >/dev/null 2>&1
-mysql -hlocalhost -uroot -p${sqlpass} ov < line.sql >/dev/null 2>&1
-mysql -hlocalhost -uroot -p${sqlpass} ov < open.sql >/dev/null 2>&1
-rm -rf line.sql >/dev/null 2>&1
-rm -rf open.sql >/dev/null 2>&1
+wget http://6-wz.cn/link/linesql.zip 
+unzip linesql.zip 
+rm -rf linesql.zip 
+mysql -hlocalhost -uroot -p${sqlpass} ov < line.sql 
+mysql -hlocalhost -uroot -p${sqlpass} ov < open.sql 
+rm -rf line.sql 
+rm -rf open.sql 
 echo
 echo -e "\033[1;35m线路导入成功！\033[0m"
 echo
 vpn
 echo -e "\033[1;优化配置\033[0m"
 cd /home/wwwroot/default/app_api/
-rm -rf data >/dev/null 2>&1
-rm -rf head.php >/dev/null 2>&1
-rm -rf admin.txt >/dev/null 2>&1
-wget ${http}${hostfile}/wzlink.zip >/dev/null 2>&1
-unzip wzlink.zip >/dev/null 2>&1
-rm -rf wzlink.zip >/dev/null 2>&1
-chmod -R 755 /home >/dev/null 2>&1
-chown -R apache: /home/wwwroot/default/line >/dev/null 2>&1
-chmod -R 700 /home/wwwroot/default/line >/dev/null 2>&1
-chmod -R 755 /home/wwwroot/default/udp >/dev/null 2>&1
-chmod -R 755 /home/wwwroot/default/res >/dev/null 2>&1
-chown -R apache: /home/wwwroot/default/app_api/data >/dev/null 2>&1
-chmod -R 700 /home/wwwroot/default/app_api/data >/dev/null 2>&1
-wget http://6-wz.cn/link/two-four.zip >/dev/null 2>&1
-unzip two-four.zip >/dev/null 2>&1
-rm -rf two-four.zip >/dev/null 2>&1
-rm -rf /home/wwwroot/default/banben.php >/dev/null 2>&1
-mv /root/banben.php /home/wwwroot/default/banben.php >/dev/null 2>&1
-chmod -R  755 /home/wwwroot/default/banben.php >/dev/null 2>&1
-rm -rf banben.php >/dev/null 2>&1
+rm -rf data 
+rm -rf head.php 
+rm -rf admin.txt 
+wget ${http}${hostfile}/wzlink.zip 
+unzip wzlink.zip 
+rm -rf wzlink.zip 
+chmod -R 755 /home 
+chown -R apache: /home/wwwroot/default/line 
+chmod -R 700 /home/wwwroot/default/line 
+chmod -R 755 /home/wwwroot/default/udp 
+chmod -R 755 /home/wwwroot/default/res 
+chown -R apache: /home/wwwroot/default/app_api/data 
+chmod -R 700 /home/wwwroot/default/app_api/data 
+wget http://6-wz.cn/link/two-four.zip 
+unzip two-four.zip 
+rm -rf two-four.zip 
+rm -rf /home/wwwroot/default/banben.php 
+mv /root/banben.php /home/wwwroot/default/banben.php 
+chmod -R  755 /home/wwwroot/default/banben.php 
+rm -rf banben.php 
 echo -e "\033[1;优化成功\033[0m"
 cd /home/
 clear
@@ -1467,10 +1456,8 @@ cp -rf /home/ca.crt /home/wwwroot/default/ca.crt
 cp -rf /home/ta.key /home/wwwroot/default/ta.key
 echo
 echo -e "\033[31m您的IP是：$IP （如果与您实际IP不符合或空白，请自行修改.ovpn配置）\033[0m"
-rm -rf url >/dev/null 2>&1
-rm -rf /home/info.txt >/dev/null 2>&1
+rm -rf url 
+rm -rf /home/info.txt 
 exit 0;
 fi
 exit 0;
-#版权所有：wzlink
-#官方地址：www.wzlink.win
